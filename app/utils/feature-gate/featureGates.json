@@ -1022,7 +1022,7 @@
     "testnet_activation_epoch": 817,
     "devnet_activation_epoch": 921,
     "comms_required": null,
-    "mainnet_activation_epoch": null,
+    "mainnet_activation_epoch": 837,
     "description": ""
   },
   {
@@ -1115,7 +1115,7 @@
     "min_fd_versions": [],
     "min_jito_versions": [],
     "planned_testnet_order": null,
-    "testnet_activation_epoch": null,
+    "testnet_activation_epoch": 984,
     "devnet_activation_epoch": null,
     "comms_required": null,
     "mainnet_activation_epoch": null,
@@ -1138,6 +1138,272 @@
     "min_jito_versions": [],
     "planned_testnet_order": null,
     "testnet_activation_epoch": null,
+    "devnet_activation_epoch": null,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "AnAP9zPV4KL7czAPQbFhpDKV2tx7g4UGNbK9wvXwjaRo",
+    "title": "SIMD-0387: BLS Pubkey Management in Vote Account",
+    "simd_link": [
+      "https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0387-bls-pubkey-management-in-vote-account.md"
+    ],
+    "simds": [
+      "0387"
+    ],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.1.0-beta.0"
+    ],
+    "min_fd_versions": [
+      "v1.0"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 977,
+    "devnet_activation_epoch": 1084,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "6aHuNsUmwSzCEMjrBzBCYaxHAyAcQBjVES92JigHBDuC",
+    "title": "SIMD-0406: Maximum instruction accounts",
+    "simd_link": [
+      "https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0406-maximum-instruction-accounts.md"
+    ],
+    "simds": [
+      "0406"
+    ],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.0.0-beta.7"
+    ],
+    "min_fd_versions": [
+      "v1.0"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 977,
+    "devnet_activation_epoch": 1085,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "YbbRLkvenrocjGPGyoQE4wjnvYzTgfsk38NFmcYK7a5",
+    "title": "SIMD-0431: Loader V3 minimum extend program size",
+    "simd_link": [
+      "https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0431-minimum-extend-program-size.md"
+    ],
+    "simds": [
+      "0431"
+    ],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.1.0-beta.0"
+    ],
+    "min_fd_versions": [
+      "v1.0"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 977,
+    "devnet_activation_epoch": 1090,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "s512oDwgx8hjMnaQjXfqqrZroVj4HvC6TkN3iSSWXCh",
+    "title": "SIMD-0512: SHA512 Syscall",
+    "simd_link": [
+      "https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0512-sha512-syscall.md"
+    ],
+    "simds": [
+      "0512"
+    ],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.1.0-beta.0"
+    ],
+    "min_fd_versions": [
+      "v1.0"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 977,
+    "devnet_activation_epoch": 1092,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "Eg7tXEwMZzS98xaZ1YHUbdRHsaYZiCsSaR6sKgxreoaj",
+    "title": "SIMD-0291: Commission rate in basis points",
+    "simd_link": [
+      "https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0291-commission-rate-in-basis-points.md"
+    ],
+    "simds": [
+      "0291"
+    ],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.1.0-beta.0"
+    ],
+    "min_fd_versions": [
+      "v1.0"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 977,
+    "devnet_activation_epoch": 1093,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "disCA4efguFL6Wqa4pGdG7jpjC7C5uiKzKnhEBqchBe",
+    "title": "SIMD-0337: Markers for Alpenglow Fast Leader Handover, DATA_COMPLETE_SHRED placement rules",
+    "simd_link": [
+      "https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0337-parent-ready-update-marker.md"
+    ],
+    "simds": [
+      "0337"
+    ],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.1.0-beta.0"
+    ],
+    "min_fd_versions": [
+      "v1.0"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 978,
+    "devnet_activation_epoch": 1095,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "VAT9huvhPjRN9cyrPytq9rwvEJ3J4ADtjdncgZRyANJ",
+    "title": "SIMD-0357: Alpenglow VAT implementation",
+    "simd_link": [
+      "https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0357-alpenglow_validator_admission_ticket.md"
+    ],
+    "simds": [
+      "0357"
+    ],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.1.0-beta.0"
+    ],
+    "min_fd_versions": [
+      "v1.0"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 979,
+    "devnet_activation_epoch": 1096,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "7VgiehxNxu53KdxgLspGQY8myE6f7UokaWa4jsGcaSz",
+    "title": "SIMD-0460: Virtual Address Space Adjustments",
+    "simd_link": [
+      "https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0460-virtual-address-space-adjustments.md"
+    ],
+    "simds": [
+      "0460"
+    ],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.0.0-beta.0"
+    ],
+    "min_fd_versions": [
+      "v1.0"
+    ],
+    "min_jito_versions": [
+      "v4.0.0-beta.0"
+    ],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 957,
+    "devnet_activation_epoch": 1073,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "CR3dVN2Yoo95Y96kLSTaziWDAQT2MNEpiWh5cqVq2pNE",
+    "title": "Account Data Direct Mapping",
+    "simd_link": [
+      ""
+    ],
+    "simds": [],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.0.0-beta.0"
+    ],
+    "min_fd_versions": [
+      "v1.0"
+    ],
+    "min_jito_versions": [
+      "v4.0.0-beta.0"
+    ],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 958,
+    "devnet_activation_epoch": 1074,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "LTDSzjZKFJMKHYpNycG1FrWwGGTaFFwqEFjB5GGLNVD",
+    "title": "SIMD-0186 Amendment: Define fee-only semantics",
+    "simd_link": [
+      "https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0186-loaded-transaction-data-size-specification.md"
+    ],
+    "simds": [
+      "0186"
+    ],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.1.0-beta.1"
+    ],
+    "min_fd_versions": [
+      "v1.0"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 980,
+    "devnet_activation_epoch": null,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "ptr9umikaeAS7ZBBp2fsfRhie16F1V2jCKA2y6gXNAK",
+    "title": "SIMD-0449: Direct Account Pointers in Program Input",
+    "simd_link": [
+      "https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0449-direct-account-pointers-in-program-input.md"
+    ],
+    "simds": [
+      "0449"
+    ],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.1.0-beta.0"
+    ],
+    "min_fd_versions": [
+      "v1.0"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 981,
     "devnet_activation_epoch": null,
     "comms_required": null,
     "mainnet_activation_epoch": null,
