@@ -20,7 +20,7 @@
     },
     "dependencies": {
         "@blockworks-foundation/mango-client": "^3.6.7",
-        "@bonfida/spl-name-service": "0.1.30",
+        "@bonfida/spl-name-service": "npm:@solana/spl-name-service@0.2.1",
         "@cloudflare/stream-react": "^1.2.0",
         "@codama/dynamic-parsers": "^1.1.12",
         "@codama/nodes-from-anchor": "^1.2.1",
