@@ -29,7 +29,7 @@ function deserializeNameRegistry(data: Buffer): NameRegistry {
     const owner = new PublicKey(data.slice(32, 64));
     const nameClass = new PublicKey(data.slice(64, 96));
     const registryData = data.slice(NAME_REGISTRY_HEADER_LEN);
-    return { parentName, owner, class: nameClass, data: registryData };
+    return { class: nameClass, data: registryData, owner, parentName };
 }
 
 export async function getHashedName(name: string): Promise<Buffer> {
@@ -81,7 +81,7 @@ export async function getFilteredProgramAccounts(
 ): Promise<{ publicKey: PublicKey; accountInfo: AccountInfo<Buffer> }[]> {
     const accounts = await connection.getProgramAccounts(programId, { filters });
     return accounts.map(({ pubkey, account }) => ({
-        publicKey: pubkey,
         accountInfo: account,
+        publicKey: pubkey,
     }));
 }

@@ -1,6 +1,7 @@
-import { getHashedName, getNameAccountKey, getNameOwner } from '@utils/spl-name-service';
 import { getDomainKey as getANSDomainKey, getNameOwner as getANSNameOwner } from '@onsol/tldparser';
 import { Connection, PublicKey } from '@solana/web3.js';
+
+import { getHashedName, getNameAccountKey, getNameOwner } from '@utils/spl-name-service';
 
 // Address of the SOL TLD
 export const SOL_TLD_AUTHORITY = new PublicKey('58PwtjSDuFHuUkYjH9BYnnQKHfwo9reZhC2zMJv9JPkx');
