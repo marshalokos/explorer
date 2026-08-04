@@ -1,7 +1,6 @@
 'use client';
 
-import { getFilteredProgramAccounts, NAME_PROGRAM_ID } from '@bonfida/spl-name-service';
-import { findTldHouse, performReverseLookupBatched } from '@onsol/tldparser';
+import { findOwnedNameAccountsForUser, findTldHouse, performReverseLookupBatched } from '@onsol/tldparser';
 import { useCluster } from '@providers/cluster';
 import { Connection, PublicKey } from '@solana/web3.js';
 import { Cluster } from '@utils/cluster';
@@ -10,24 +9,7 @@ import { useEffect, useState } from 'react';
 import { DomainInfo, SOL_TLD_AUTHORITY } from './domain-info';
 
 async function getUserDomainAddresses(connection: Connection, userAddress: string): Promise<PublicKey[]> {
-    const filters = [
-        // parent
-        {
-            memcmp: {
-                bytes: SOL_TLD_AUTHORITY.toBase58(),
-                offset: 0,
-            },
-        },
-        // owner
-        {
-            memcmp: {
-                bytes: userAddress,
-                offset: 32,
-            },
-        },
-    ];
-    const accounts = await getFilteredProgramAccounts(connection, NAME_PROGRAM_ID, filters);
-    return accounts.map(a => a.publicKey);
+    return findOwnedNameAccountsForUser(connection, new PublicKey(userAddress), SOL_TLD_AUTHORITY);
 }
 
 async function performReverseLookup(connection: Connection, address: PublicKey): Promise<string | undefined> {
@@ -52,14 +34,16 @@ export const useUserDomains = (userAddress: string): [DomainInfo[] | null, boole
                 const userDomains = await Promise.all(
                     userDomainAddresses.map(async address => {
                         const domainName = await performReverseLookup(connection, address);
+                        if (!domainName) return null;
                         return {
                             address,
                             name: `${domainName}.sol`,
                         };
                     })
                 );
-                userDomains.sort((a, b) => a.name.localeCompare(b.name));
-                setResult(userDomains);
+                const resolvedDomains = userDomains.filter((domain): domain is DomainInfo => domain !== null);
+                resolvedDomains.sort((a, b) => a.name.localeCompare(b.name));
+                setResult(resolvedDomains);
             } catch (err) {
                 console.log(`Error fetching user domains ${err}`);
             } finally {

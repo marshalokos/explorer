@@ -1,5 +1,10 @@
-import { getHashedName, getNameAccountKey, getNameOwner } from '@bonfida/spl-name-service';
-import { getDomainKey as getANSDomainKey, getNameOwner as getANSNameOwner } from '@onsol/tldparser';
+import {
+    getDomainKey as getANSDomainKey,
+    getHashedName,
+    getNameAccountKeyWithBump,
+    getNameOwner,
+    getNameOwner as getANSNameOwner,
+} from '@onsol/tldparser';
 import { Connection, PublicKey } from '@solana/web3.js';
 
 // Address of the SOL TLD
@@ -7,7 +12,7 @@ export const SOL_TLD_AUTHORITY = new PublicKey('58PwtjSDuFHuUkYjH9BYnnQKHfwo9reZ
 
 async function getDomainKey(name: string, nameClass?: PublicKey, nameParent?: PublicKey) {
     const hashedDomainName = await getHashedName(name);
-    const nameKey = await getNameAccountKey(hashedDomainName, nameClass, nameParent);
+    const [nameKey] = getNameAccountKeyWithBump(hashedDomainName, nameClass, nameParent);
     return nameKey;
 }
 
