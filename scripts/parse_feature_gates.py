@@ -1,10 +1,12 @@
 from typing import Annotated, Optional
+import asyncio
 import requests
 import json
 import os
 import re
 from pydantic import BaseModel, Field, BeforeValidator, ConfigDict, ValidationError
 
+from solana.exceptions import SolanaRpcException
 from solana.rpc.async_api import AsyncClient
 from solders.pubkey import Pubkey
 
@@ -160,12 +162,21 @@ def safe_model_validate(model, data):
         return None
 
 
-async def fetch_feature_activations(cluster_url: str, key: str, backup_epoch: int | None) -> dict[str, int | None]:
+async def fetch_feature_activations(cluster_url: str, key: str, backup_epoch: int | None, retries: int = 3, timeout: int = 30) -> dict[str, int | None]:
     """Fetch feature activations from a Solana cluster."""
 
-    connection = AsyncClient(cluster_url)
-    account = await connection.get_account_info(Pubkey.from_string(key))
-    epoch_schedule = (await connection.get_epoch_schedule()).value
+    for attempt in range(retries):
+        try:
+            connection = AsyncClient(cluster_url, timeout=timeout)
+            account = await connection.get_account_info(Pubkey.from_string(key))
+            epoch_schedule = (await connection.get_epoch_schedule()).value
+            break
+        except (SolanaRpcException, Exception) as e:
+            if attempt < retries - 1:
+                await asyncio.sleep(2 ** attempt)
+                continue
+            print(f"Warning: failed to fetch feature activation for {key} from {cluster_url} after {retries} attempts: {e}")
+            return backup_epoch
 
     if account.value and account.value.data:
         # First byte indicates if activated (1) or not (0)
