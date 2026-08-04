@@ -1,6 +1,7 @@
 'use client';
 
-import { getFilteredProgramAccounts, NAME_PROGRAM_ID, performReverseLookup } from '@bonfida/spl-name-service';
+import { getFilteredProgramAccounts, NAME_PROGRAM_ID } from '@bonfida/spl-name-service';
+import { findTldHouse, performReverseLookupBatched } from '@onsol/tldparser';
 import { useCluster } from '@providers/cluster';
 import { Connection, PublicKey } from '@solana/web3.js';
 import { Cluster } from '@utils/cluster';
@@ -27,6 +28,12 @@ async function getUserDomainAddresses(connection: Connection, userAddress: strin
     ];
     const accounts = await getFilteredProgramAccounts(connection, NAME_PROGRAM_ID, filters);
     return accounts.map(a => a.publicKey);
+}
+
+async function performReverseLookup(connection: Connection, address: PublicKey): Promise<string | undefined> {
+    const [solTldHouse] = findTldHouse('sol');
+    const [domainName] = await performReverseLookupBatched(connection, [address], solTldHouse);
+    return domainName;
 }
 
 export const useUserDomains = (userAddress: string): [DomainInfo[] | null, boolean] => {

@@ -29,10 +29,10 @@ export async function getDomainInfo(domain: string, connection: Connection) {
     );
     try {
         const registry = await getNameOwner(connection, domainKey);
-        return registry && registry.registry.owner
+        return registry && registry.owner
             ? {
                   address: domainKey.toString(),
-                  owner: registry.registry.owner.toString(),
+                  owner: registry.owner.toString(),
               }
             : null;
     } catch {
