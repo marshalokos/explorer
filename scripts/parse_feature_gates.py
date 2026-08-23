@@ -221,7 +221,8 @@ async def parse_wiki():
 
                 # Clean up SIMD number and find matching proposal
                 simd_links = []
-                for simd in wiki_feature.simd.split(','):
+                raw_simds = wiki_feature.simd.split(',') if wiki_feature.simd else []
+                for simd in raw_simds:
                     simd = simd.strip()
                     if simd and simd.isdigit():
                         simd_number = simd.zfill(4)
