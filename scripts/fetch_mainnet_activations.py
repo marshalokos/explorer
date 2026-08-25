@@ -1,5 +1,6 @@
 import asyncio
 from solana.rpc.async_api import AsyncClient
+from solana.exceptions import SolanaRpcException
 
 from solders.pubkey import Pubkey
 
@@ -35,6 +36,23 @@ def get_epoch_for_slot(epoch_schedule: dict, slot: int) -> int:
         return epoch_schedule.first_normal_epoch + normal_epoch_index
 
 
+MAX_RETRIES = 5
+RETRY_DELAY_SECONDS = 5
+
+
+async def get_account_info_with_retry(connection: AsyncClient, pubkey: Pubkey):
+    for attempt in range(MAX_RETRIES):
+        try:
+            return await connection.get_account_info(pubkey)
+        except SolanaRpcException as exc:
+            if attempt < MAX_RETRIES - 1:
+                print(f"RPC error ({exc}), retrying in {RETRY_DELAY_SECONDS}s "
+                      f"(attempt {attempt + 1}/{MAX_RETRIES})...")
+                await asyncio.sleep(RETRY_DELAY_SECONDS)
+            else:
+                raise
+
+
 async def main():
     features = get_features()
 
@@ -44,7 +62,7 @@ async def main():
     for feature in features:
         if feature['devnet_activation_epoch'] and feature['testnet_activation_epoch'] and not feature['mainnet_activation_epoch']:
             print("Fetching feature gate", feature['key'])
-            account = await connection.get_account_info(Pubkey.from_string(feature['key']))
+            account = await get_account_info_with_retry(connection, Pubkey.from_string(feature['key']))
 
             if account.value and account.value.data:
                 # First byte indicates if activated (1) or not (0)
