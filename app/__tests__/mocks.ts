@@ -1,4 +1,5 @@
 import {
+    AddressLookupTableAccount,
     Message,
     MessageArgs,
     MessageCompiledInstruction,
@@ -43,6 +44,42 @@ vi.mock('next/navigation', () => {
         })),
     };
 });
+
+// Pre-built mock address lookup table data keyed by base58 address.
+// Add entries here when a transaction fixture references a lookup table whose
+// on-chain account may no longer exist (e.g. deactivated tables).
+const MOCK_LOOKUP_TABLES: Record<string, { addresses: PublicKey[] }> = {
+    // Used by aTokenCreateIdempotentMsg fixture (readonlyIndexes: [89,123,69,80,90,94])
+    // index 69 must be TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA
+    EDDSpjZHrsFKYTMJDcBqXAjkLcu9EKdvrQR4XnqsXErH: {
+        addresses: (() => {
+            const TOKEN_PROGRAM = new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA');
+            const DEFAULT_KEY = new PublicKey('11111111111111111111111111111111');
+            const addrs = Array.from({ length: 130 }, () => DEFAULT_KEY);
+            addrs[69] = TOKEN_PROGRAM;
+            return addrs;
+        })(),
+    },
+};
+
+/**
+ * Returns a pre-built mock {@link AddressLookupTableAccount} for known table
+ * addresses used in test fixtures.  Returns `null` for unknown tables so that
+ * callers can mirror the real `Connection.getAddressLookupTable` behaviour.
+ */
+export function getMockAddressLookupTable(key: PublicKey): AddressLookupTableAccount | null {
+    const entry = MOCK_LOOKUP_TABLES[key.toBase58()];
+    if (!entry) return null;
+    return new AddressLookupTableAccount({
+        key,
+        state: {
+            addresses: entry.addresses,
+            deactivationSlot: BigInt('18446744073709551615'),
+            lastExtendedSlot: 0,
+            lastExtendedSlotStartIndex: 0,
+        },
+    });
+}
 
 export function deserializeMessage(message: string): VersionedMessage {
     const m = JSON.parse(message) as MessageArgs;
