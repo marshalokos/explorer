@@ -13,14 +13,11 @@ describe('BaseInstructionCard', () => {
     test('should render "BaseInstructionCard"', async () => {
         const index = 1;
         const m = mock.deserializeMessageV0(stubs.aTokenCreateIdempotentMsg);
-        const connection = new Connection(clusterApiUrl('mainnet-beta'));
-        const lookups = await Promise.all(
-            m.addressTableLookups.map(lookup =>
-                connection.getAddressLookupTable(lookup.accountKey).then(val => val.value)
-            )
-        );
+        const lookups = m.addressTableLookups
+            .map(lookup => mock.getMockAddressLookupTable(lookup.accountKey))
+            .filter(x => x !== null) as AddressLookupTableAccount[];
         const ti = TransactionMessage.decompile(m, {
-            addressLookupTableAccounts: lookups.filter(x => x !== null) as AddressLookupTableAccount[],
+            addressLookupTableAccounts: lookups,
         }).instructions[index];
 
         expect(ti.programId.equals(ASSOCIATED_TOKEN_PROGRAM_ID)).toBeTruthy();
@@ -40,14 +37,11 @@ describe('BaseInstructionCard', () => {
     test('should render "BaseInstructionCard" with raw data', async () => {
         const index = 1;
         const m = mock.deserializeMessageV0(stubs.aTokenCreateIdempotentMsg);
-        const connection = new Connection(clusterApiUrl('mainnet-beta'));
-        const lookups = await Promise.all(
-            m.addressTableLookups.map(lookup =>
-                connection.getAddressLookupTable(lookup.accountKey).then(val => val.value)
-            )
-        );
+        const lookups = m.addressTableLookups
+            .map(lookup => mock.getMockAddressLookupTable(lookup.accountKey))
+            .filter(x => x !== null) as AddressLookupTableAccount[];
         const ti = TransactionMessage.decompile(m, {
-            addressLookupTableAccounts: lookups.filter(x => x !== null) as AddressLookupTableAccount[],
+            addressLookupTableAccounts: lookups,
         }).instructions[index];
         expect(ti.programId.equals(ASSOCIATED_TOKEN_PROGRAM_ID)).toBeTruthy();
 

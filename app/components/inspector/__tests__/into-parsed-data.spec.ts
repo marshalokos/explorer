@@ -48,14 +48,11 @@ describe('intoParsedData', () => {
     test('should return "createIdempotent" instruction data', async () => {
         const index = 1;
         const message = mock.deserializeMessageV0(stubs.aTokenCreateIdempotentMsg);
-        const connection = new Connection(clusterApiUrl('mainnet-beta'));
-        const lookups = await Promise.all(
-            message.addressTableLookups.map(lookup =>
-                connection.getAddressLookupTable(lookup.accountKey).then(val => val.value)
-            )
-        );
+        const lookups = message.addressTableLookups
+            .map(lookup => mock.getMockAddressLookupTable(lookup.accountKey))
+            .filter(x => x !== null) as AddressLookupTableAccount[];
         const tx = TransactionMessage.decompile(message, {
-            addressLookupTableAccounts: lookups.filter(x => x !== null) as AddressLookupTableAccount[],
+            addressLookupTableAccounts: lookups,
         });
         const ix = tx.instructions[index];
         const data = privateIntoParsedData(ix);

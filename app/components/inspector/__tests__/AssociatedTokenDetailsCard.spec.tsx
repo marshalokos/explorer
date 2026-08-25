@@ -16,14 +16,11 @@ describe('inspector::AssociatedTokenDetailsCard', () => {
     test('should render "CreateIdempotent" card', async () => {
         const index = 1;
         const m = mock.deserializeMessageV0(stubs.aTokenCreateIdempotentMsg);
-        const connection = new Connection(clusterApiUrl('mainnet-beta'));
-        const lookups = await Promise.all(
-            m.addressTableLookups.map(lookup =>
-                connection.getAddressLookupTable(lookup.accountKey).then(val => val.value)
-            )
-        );
+        const lookups = m.addressTableLookups
+            .map(lookup => mock.getMockAddressLookupTable(lookup.accountKey))
+            .filter(x => x !== null) as AddressLookupTableAccount[];
         const ti = TransactionMessage.decompile(m, {
-            addressLookupTableAccounts: lookups.filter(x => x !== null) as AddressLookupTableAccount[],
+            addressLookupTableAccounts: lookups,
         }).instructions[index];
         expect(ti.programId.equals(spl.ASSOCIATED_TOKEN_PROGRAM_ID)).toBeTruthy();
 
@@ -125,14 +122,11 @@ describe('inspector::AssociatedTokenDetailsCard with inner cards', () => {
     test('should render "CreateIdempotentDetailsCard"', async () => {
         const index = 1;
         const m = mock.deserializeMessageV0(stubs.aTokenCreateIdempotentMsgWithInnerCards);
-        const connection = new Connection(clusterApiUrl('mainnet-beta'));
-        const lookups = await Promise.all(
-            m.addressTableLookups.map(lookup =>
-                connection.getAddressLookupTable(lookup.accountKey).then(val => val.value)
-            )
-        );
+        const lookups = m.addressTableLookups
+            .map(lookup => mock.getMockAddressLookupTable(lookup.accountKey))
+            .filter(x => x !== null) as AddressLookupTableAccount[];
         const ti = TransactionMessage.decompile(m, {
-            addressLookupTableAccounts: lookups.filter(x => x !== null) as AddressLookupTableAccount[],
+            addressLookupTableAccounts: lookups,
         }).instructions[index];
 
         expect(ti.programId.equals(spl.ASSOCIATED_TOKEN_PROGRAM_ID)).toBeTruthy();
