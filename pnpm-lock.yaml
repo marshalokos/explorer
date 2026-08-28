@@ -21,9 +21,6 @@ importers:
       '@blockworks-foundation/mango-client':
         specifier: ^3.6.7
         version: 3.6.7(bufferutil@4.0.7)(typescript@5.0.4)(utf-8-validate@5.0.10)
-      '@bonfida/spl-name-service':
-        specifier: 0.1.30
-        version: 0.1.30(@solana/buffer-layout@3.0.0)(@solana/spl-token@0.1.8(bufferutil@4.0.7)(typescript@5.0.4)(utf-8-validate@5.0.10))(@solana/web3.js@1.98.4(bufferutil@4.0.7)(typescript@5.0.4)(utf-8-validate@5.0.10))(bn.js@5.2.1)(borsh@0.7.0)(bufferutil@4.0.7)(utf-8-validate@5.0.10)
       '@cloudflare/stream-react':
         specifier: ^1.2.0
         version: 1.2.0(react@18.3.1)
@@ -717,15 +714,6 @@ packages:
 
   '@blockworks-foundation/mango-client@3.6.7':
     resolution: {integrity: sha512-AKPFzkDArQ4w1eO9xYQPwXoxuzpKNKWyryDmtNLm3YSgzpNQbKAfD6VH9Hxw3m3Kcq5YzYH9pIHSae+qFgOTvw==}
-
-  '@bonfida/spl-name-service@0.1.30':
-    resolution: {integrity: sha512-0aSpymeNDq7rDSDEJgB6/qKyy3yUkHLQk7Jxwtmibfva3s1johEfFdl2kUDDPWi/ubgbxYjPxJRGrlGQNEmmQw==}
-    peerDependencies:
-      '@solana/buffer-layout': ^4.0.0
-      '@solana/spl-token': 0.2.0
-      '@solana/web3.js': ^1.37.1
-      bn.js: ^5.1.3
-      borsh: 0.7.0
 
   '@bundled-es-modules/cookie@2.0.1':
     resolution: {integrity: sha512-8o+5fRPLNbjbdGRRmJj3h6Hh1AQJf2dk3qQ/5ZFb+PXkRNiSoMGGUKlsgLfrxneb72axVJyIYji64E2+nNfYyw==}
@@ -4690,10 +4678,6 @@ packages:
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
-
-  chalk@5.3.0:
-    resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
-    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
   chalk@5.4.1:
     resolution: {integrity: sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==}
@@ -9314,18 +9298,6 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@bonfida/spl-name-service@0.1.30(@solana/buffer-layout@3.0.0)(@solana/spl-token@0.1.8(bufferutil@4.0.7)(typescript@5.0.4)(utf-8-validate@5.0.10))(@solana/web3.js@1.98.4(bufferutil@4.0.7)(typescript@5.0.4)(utf-8-validate@5.0.10))(bn.js@5.2.1)(borsh@0.7.0)(bufferutil@4.0.7)(utf-8-validate@5.0.10)':
-    dependencies:
-      '@solana/buffer-layout': 3.0.0
-      '@solana/spl-token': 0.1.8(bufferutil@4.0.7)(typescript@5.0.4)(utf-8-validate@5.0.10)
-      '@solana/web3.js': 1.98.4(bufferutil@4.0.7)(typescript@5.0.4)(utf-8-validate@5.0.10)
-      bn.js: 5.2.1
-      borsh: 0.7.0
-      ethers: 5.7.2(bufferutil@4.0.7)(utf-8-validate@5.0.10)
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-
   '@bundled-es-modules/cookie@2.0.1':
     dependencies:
       cookie: 0.7.2
@@ -12172,7 +12144,7 @@ snapshots:
 
   '@solana/errors@2.0.0(typescript@5.0.4)':
     dependencies:
-      chalk: 5.3.0
+      chalk: 5.4.1
       commander: 12.1.0
       typescript: 5.0.4
 
@@ -14455,8 +14427,6 @@ snapshots:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
-
-  chalk@5.3.0: {}
 
   chalk@5.4.1: {}
 
