@@ -39,7 +39,21 @@ export namespace NftokenTypes {
 
     export type NftInfo = NftAccount & Partial<Metadata>;
 
-    export const nftAccountLayout = BufferLayout.struct([
+    export const nftAccountLayout = BufferLayout.struct<{
+        discriminator: Uint8Array;
+        version: number;
+        holder: Uint8Array;
+        authority: Uint8Array;
+        authority_can_update: number;
+        collection: Uint8Array;
+        delegate: Uint8Array;
+        is_frozen: number;
+        unused_1: number;
+        unused_2: number;
+        unused_3: number;
+        metadata_url_length: number;
+        metadata_url: string;
+    }>([
         BufferLayout.blob(8, 'discriminator'),
         BufferLayout.u8('version'),
         publicKey('holder'),
@@ -55,7 +69,18 @@ export namespace NftokenTypes {
         BufferLayout.utf8(400, 'metadata_url'),
     ]);
 
-    export const collectionAccountLayout = BufferLayout.struct([
+    export const collectionAccountLayout = BufferLayout.struct<{
+        discriminator: Uint8Array;
+        version: number;
+        authority: Uint8Array;
+        authority_can_update: number;
+        unused_1: number;
+        unused_2: number;
+        unused_3: number;
+        unused_4: number;
+        metadata_url_length: number;
+        metadata_url: string;
+    }>([
         BufferLayout.blob(8, 'discriminator'),
         BufferLayout.u8('version'),
         publicKey('authority'),
