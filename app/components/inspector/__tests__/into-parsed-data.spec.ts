@@ -1,10 +1,18 @@
 import * as spl from '@solana/spl-token';
 import { AddressLookupTableAccount, clusterApiUrl, Connection, PublicKey, TransactionMessage } from '@solana/web3.js';
+import { beforeAll, vi } from 'vitest';
 
 import * as stubs from '@/app/__tests__/mock-stubs';
 import * as mock from '@/app/__tests__/mocks';
 
 import { privateIntoParsedData } from '../into-parsed-data';
+
+beforeAll(() => {
+    vi.spyOn(Connection.prototype, 'getAddressLookupTable').mockImplementation(async key => ({
+        context: { slot: 0 },
+        value: mock.createMockAddressLookupTableAccount(key),
+    }));
+});
 
 describe('intoParsedData', () => {
     test('should return "create" instruction data', async () => {

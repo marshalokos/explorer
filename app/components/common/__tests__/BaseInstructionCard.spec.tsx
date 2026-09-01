@@ -1,6 +1,7 @@
 import { ASSOCIATED_TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import { AddressLookupTableAccount, clusterApiUrl, Connection, TransactionMessage } from '@solana/web3.js';
 import { render, screen } from '@testing-library/react';
+import { beforeAll, vi } from 'vitest';
 
 import * as stubs from '@/app/__tests__/mock-stubs';
 import * as mock from '@/app/__tests__/mocks';
@@ -8,6 +9,13 @@ import { ClusterProvider } from '@/app/providers/cluster';
 import { ScrollAnchorProvider } from '@/app/providers/scroll-anchor';
 
 import { BaseInstructionCard } from '../BaseInstructionCard';
+
+beforeAll(() => {
+    vi.spyOn(Connection.prototype, 'getAddressLookupTable').mockImplementation(async key => ({
+        context: { slot: 0 },
+        value: mock.createMockAddressLookupTableAccount(key),
+    }));
+});
 
 describe('BaseInstructionCard', () => {
     test('should render "BaseInstructionCard"', async () => {

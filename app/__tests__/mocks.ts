@@ -1,4 +1,5 @@
 import {
+    AddressLookupTableAccount,
     Message,
     MessageArgs,
     MessageCompiledInstruction,
@@ -105,4 +106,29 @@ export async function sleep(ms?: number): Promise<void> {
     const timeoutMs =
         ms || (process.env.TEST_SERIAL_TIMEOUT ? Number(process.env.TEST_SERIAL_TIMEOUT.trim()) : FALLBACK_TIMEOUT_MS);
     return await new Promise(resolve => setTimeout(resolve, timeoutMs));
+}
+
+/**
+ * Creates a mock AddressLookupTableAccount for use in tests.
+ *
+ * The lookup table for EDDSpjZHrsFKYTMJDcBqXAjkLcu9EKdvrQR4XnqsXErH uses
+ * readonlyIndexes [89, 123, 69, 80, 90, 94]. Index 69 is the Token Program.
+ * All other entries are filled with the System Program as placeholders.
+ */
+export function createMockAddressLookupTableAccount(key: PublicKey): AddressLookupTableAccount {
+    const TOKEN_PROGRAM = new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA');
+    const SYSTEM_PROGRAM = new PublicKey('11111111111111111111111111111111');
+
+    const addresses = Array.from({ length: 124 }, (_, i) => (i === 69 ? TOKEN_PROGRAM : SYSTEM_PROGRAM));
+
+    return new AddressLookupTableAccount({
+        key,
+        state: {
+            addresses,
+            authority: undefined,
+            deactivationSlot: BigInt('18446744073709551615'),
+            lastExtendedSlot: 0,
+            lastExtendedSlotStartIndex: 0,
+        },
+    });
 }
