@@ -1,7 +1,7 @@
 import * as spl from '@solana/spl-token';
 import { AddressLookupTableAccount, clusterApiUrl, Connection, TransactionMessage } from '@solana/web3.js';
 import { render, screen, waitFor } from '@testing-library/react';
-import { describe } from 'vitest';
+import { beforeAll, describe, vi } from 'vitest';
 
 import * as stubs from '@/app/__tests__/mock-stubs';
 import * as mock from '@/app/__tests__/mocks';
@@ -11,6 +11,13 @@ import { ScrollAnchorProvider } from '@/app/providers/scroll-anchor';
 
 import { intoParsedInstruction } from '../../inspector/into-parsed-data';
 import { AssociatedTokenDetailsCard } from '../associated-token/AssociatedTokenDetailsCard';
+
+beforeAll(() => {
+    vi.spyOn(Connection.prototype, 'getAddressLookupTable').mockImplementation(async key => ({
+        context: { slot: 0 },
+        value: mock.createMockAddressLookupTableAccount(key),
+    }));
+});
 
 describe('inspector::AssociatedTokenDetailsCard', () => {
     test('should render "CreateIdempotent" card', async () => {

@@ -3,7 +3,7 @@ import * as spl from '@solana/spl-token';
 import { AddressLookupTableAccount, clusterApiUrl, Connection, PublicKey, TransactionMessage } from '@solana/web3.js';
 import { render, screen } from '@testing-library/react';
 import { useSearchParams } from 'next/navigation';
-import { vi } from 'vitest';
+import { beforeAll, vi } from 'vitest';
 
 import * as stubs from '@/app/__tests__/mock-stubs';
 import * as mock from '@/app/__tests__/mocks';
@@ -19,6 +19,13 @@ useSearchParams.mockReturnValue({
     get: () => 'mainnet-beta',
     has: (_query?: string) => false,
     toString: () => '',
+});
+
+beforeAll(() => {
+    vi.spyOn(Connection.prototype, 'getAddressLookupTable').mockImplementation(async key => ({
+        context: { slot: 0 },
+        value: mock.createMockAddressLookupTableAccount(key),
+    }));
 });
 
 describe('instruction::AssociatedTokenDetailsCard', () => {
