@@ -1164,7 +1164,7 @@
     "testnet_activation_epoch": 977,
     "devnet_activation_epoch": 1084,
     "comms_required": null,
-    "mainnet_activation_epoch": null,
+    "mainnet_activation_epoch": 1000,
     "description": ""
   },
   {
@@ -1188,7 +1188,7 @@
     "testnet_activation_epoch": 977,
     "devnet_activation_epoch": 1085,
     "comms_required": null,
-    "mainnet_activation_epoch": null,
+    "mainnet_activation_epoch": 1001,
     "description": ""
   },
   {
@@ -1212,7 +1212,7 @@
     "testnet_activation_epoch": 977,
     "devnet_activation_epoch": 1090,
     "comms_required": null,
-    "mainnet_activation_epoch": null,
+    "mainnet_activation_epoch": 1003,
     "description": ""
   },
   {
@@ -1233,8 +1233,8 @@
     ],
     "min_jito_versions": [],
     "planned_testnet_order": null,
-    "testnet_activation_epoch": 977,
-    "devnet_activation_epoch": 1092,
+    "testnet_activation_epoch": 978,
+    "devnet_activation_epoch": 1093,
     "comms_required": null,
     "mainnet_activation_epoch": null,
     "description": ""
@@ -1260,7 +1260,7 @@
     "testnet_activation_epoch": 977,
     "devnet_activation_epoch": 1093,
     "comms_required": null,
-    "mainnet_activation_epoch": null,
+    "mainnet_activation_epoch": 1004,
     "description": ""
   },
   {
@@ -1284,7 +1284,7 @@
     "testnet_activation_epoch": 978,
     "devnet_activation_epoch": 1095,
     "comms_required": null,
-    "mainnet_activation_epoch": null,
+    "mainnet_activation_epoch": 1006,
     "description": ""
   },
   {
@@ -1308,7 +1308,7 @@
     "testnet_activation_epoch": 979,
     "devnet_activation_epoch": 1096,
     "comms_required": null,
-    "mainnet_activation_epoch": null,
+    "mainnet_activation_epoch": 1007,
     "description": ""
   },
   {
@@ -1331,8 +1331,8 @@
       "v4.0.0-beta.0"
     ],
     "planned_testnet_order": null,
-    "testnet_activation_epoch": 957,
-    "devnet_activation_epoch": 1073,
+    "testnet_activation_epoch": 958,
+    "devnet_activation_epoch": 1074,
     "comms_required": null,
     "mainnet_activation_epoch": null,
     "description": ""
@@ -1355,8 +1355,8 @@
       "v4.0.0-beta.0"
     ],
     "planned_testnet_order": null,
-    "testnet_activation_epoch": 958,
-    "devnet_activation_epoch": 1074,
+    "testnet_activation_epoch": 959,
+    "devnet_activation_epoch": 1075,
     "comms_required": null,
     "mainnet_activation_epoch": null,
     "description": ""
@@ -1403,8 +1403,88 @@
     ],
     "min_jito_versions": [],
     "planned_testnet_order": null,
-    "testnet_activation_epoch": 981,
-    "devnet_activation_epoch": null,
+    "testnet_activation_epoch": 982,
+    "devnet_activation_epoch": 1100,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "61BtM7BkDEE8Yq5fskEVAQT9mYA8qCejJWoLe5apqg81",
+    "title": "SIMD-0437-2: Set lamports per byte to 5080",
+    "simd_link": [],
+    "simds": [],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.2.0-beta.1"
+    ],
+    "min_fd_versions": [
+      "v26.08.0"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 1026,
+    "devnet_activation_epoch": 1141,
+    "comms_required": null,
+    "mainnet_activation_epoch": 1034,
+    "description": ""
+  },
+  {
+    "key": "txv1aq4pp281K9um3tnPgkfX8UqtFT6wcVW3hNezGLL",
+    "title": "SIMD-0385: Transaction V1",
+    "simd_link": [],
+    "simds": [],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.2.2"
+    ],
+    "min_fd_versions": [
+      "v26.08.0"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 1025,
+    "devnet_activation_epoch": 1140,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "iBRLMc81UjRa8fn8A6eE8bJTnRbgQoPTynM51akENCV",
+    "title": "SIMD-0525: Reduce Slot Time to 250ms",
+    "simd_link": [],
+    "simds": [],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.2.0-beta.1"
+    ],
+    "min_fd_versions": [
+      "v1.1.1"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 1004,
+    "devnet_activation_epoch": 1123,
+    "comms_required": null,
+    "mainnet_activation_epoch": null,
+    "description": ""
+  },
+  {
+    "key": "iBRLjhJnkmDZgNoZRDMW11d8ZV7HvsL3vAyRjZB5npW",
+    "title": "SIMD-0525: Reduce Slot Time to 200ms",
+    "simd_link": [],
+    "simds": [],
+    "owners": [],
+    "min_agave_versions": [
+      "v4.2.0-beta.1"
+    ],
+    "min_fd_versions": [
+      "v1.1.1"
+    ],
+    "min_jito_versions": [],
+    "planned_testnet_order": null,
+    "testnet_activation_epoch": 1006,
+    "devnet_activation_epoch": 1128,
     "comms_required": null,
     "mainnet_activation_epoch": null,
     "description": ""
