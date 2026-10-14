@@ -1,12 +1,12 @@
 'use client';
 
-import { getFilteredProgramAccounts, NAME_PROGRAM_ID, performReverseLookup } from '@bonfida/spl-name-service';
 import { useCluster } from '@providers/cluster';
 import { Connection, PublicKey } from '@solana/web3.js';
 import { Cluster } from '@utils/cluster';
 import { useEffect, useState } from 'react';
 
 import { DomainInfo, SOL_TLD_AUTHORITY } from './domain-info';
+import { getFilteredProgramAccounts, NAME_PROGRAM_ID, performReverseLookup } from './sns';
 
 async function getUserDomainAddresses(connection: Connection, userAddress: string): Promise<PublicKey[]> {
     const filters = [
@@ -26,7 +26,7 @@ async function getUserDomainAddresses(connection: Connection, userAddress: strin
         },
     ];
     const accounts = await getFilteredProgramAccounts(connection, NAME_PROGRAM_ID, filters);
-    return accounts.map(a => a.publicKey);
+    return accounts.map(a => a.pubkey);
 }
 
 export const useUserDomains = (userAddress: string): [DomainInfo[] | null, boolean] => {
