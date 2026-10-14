@@ -42,7 +42,7 @@
         "@solana-program/system": "^0.7.0",
         "@solana-program/token": "^0.5.1",
         "@solana-program/token-2022": "^0.4.0",
-        "@solana/buffer-layout": "^3.0.0",
+        "@solana/buffer-layout": "^4.0.0",
         "@solana/spl-account-compression": "^0.1.8",
         "@solana/spl-token": "^0.1.8",
         "@solana/web3.js": "^1.98.4",
